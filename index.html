@@ -779,13 +779,8 @@ document.getElementById('optinForm').addEventListener('submit', async function (
     // no-cors tidak throw, tapi kalau ada error jaringan tetap lanjut
   }
 
-  // Nama di thank you
-  document.getElementById('tyName').textContent = nama.split(' ')[0];
-
-  // Switch halaman
-  document.getElementById('optinPage').style.display = 'none';
-  document.getElementById('tyPage').classList.add('show');
-  window.scrollTo(0, 0);
+  // Redirect ke LP setelah data terkirim ke spreadsheet
+  window.location.href = 'https://bantuenglish.myscalev.com/leadmagnet-speak-daily';
 });
 </script>
 </body>

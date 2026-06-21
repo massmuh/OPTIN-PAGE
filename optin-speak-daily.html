@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5-Minute Speaking Kit — BantuEnglish</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --be-blue: #001fb8;
+      --be-blue-dark: #0019a0;
+      --be-yellow: #fbca22;
+      --be-yellow-dark: #e6b800;
+      --be-dark: #404040;
+      --be-white: #ffffff;
+      --be-muted: #6b7280;
+      --be-font-h: 'Poppins', Arial, sans-serif;
+      --be-font-b: 'Roboto', Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--be-font-b); color: var(--be-dark); }
+
+    /* ==============================
+       OPTIN PAGE
+    ============================== */
+    .optin-page {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #001095 0%, #001fb8 50%, #0a2fd4 100%);
+      display: flex;
+      align-items: center;
+      padding: 48px 24px;
+    }
+
+    .optin-wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 64px;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* --- LEFT COPY --- */
+    .optin-logo { height: 34px; margin-bottom: 32px; display: block; }
+
+    .optin-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(251,202,34,.15);
+      border: 1px solid rgba(251,202,34,.35);
+      color: var(--be-yellow);
+      font-family: var(--be-font-h);
+      font-weight: 600;
+      font-size: .76rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+
+    .optin-headline {
+      font-family: var(--be-font-h);
+      font-weight: 800;
+      font-size: clamp(1.8rem, 3.8vw, 2.7rem);
+      line-height: 1.12;
+      color: var(--be-white);
+      letter-spacing: -.02em;
+      margin-bottom: 18px;
+    }
+
+    .optin-headline .hl { color: var(--be-yellow); }
+
+    .optin-sub {
+      font-size: 1.02rem;
+      color: rgba(255,255,255,.75);
+      line-height: 1.65;
+      margin-bottom: 30px;
+      max-width: 460px;
+    }
+
+    .optin-perks { list-style: none; display: flex; flex-direction: column; gap: 13px; }
+
+    .optin-perks li {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      color: rgba(255,255,255,.88);
+      font-size: .96rem;
+      line-height: 1.5;
+    }
+
+    .perk-dot {
+      width: 22px; height: 22px;
+      background: rgba(251,202,34,.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .7rem; font-weight: 700;
+      color: var(--be-yellow);
+      flex-shrink: 0; margin-top: 1px;
+    }
+
+    .optin-perks li strong { color: var(--be-white); }
+
+    /* --- RIGHT CARD --- */
+    .optin-card {
+      background: var(--be-white);
+      border-radius: 24px;
+      padding: 32px 28px;
+      box-shadow: 0 40px 100px -24px rgba(0,0,0,.45);
+    }
+
+    /* Phone mockup */
+    .phone-wrap {
+      background: linear-gradient(160deg, #0c1540, #1a2560);
+      border-radius: 20px;
+      padding: 13px 13px 16px;
+      margin-bottom: 26px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+    }
+
+    .phone-notch {
+      width: 48px; height: 4px;
+      background: rgba(255,255,255,.1);
+      border-radius: 999px;
+      margin: 0 auto 10px;
+    }
+
+    .phone-screen { background: #f0f2fb; border-radius: 11px; overflow: hidden; }
+
+    .phone-bar {
+      background: var(--be-blue);
+      padding: 9px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .phone-bar-title {
+      color: white;
+      font-family: var(--be-font-h);
+      font-weight: 700;
+      font-size: .67rem;
+    }
+
+    .phone-stats { display: flex; gap: 5px; }
+
+    .phone-pill {
+      background: rgba(251,202,34,.22);
+      color: var(--be-yellow);
+      font-size: .58rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 999px;
+    }
+
+    .phone-body { padding: 10px 10px 12px; }
+
+    .phone-deck-label {
+      font-family: var(--be-font-h);
+      font-weight: 700;
+      font-size: .63rem;
+      color: var(--be-blue);
+      text-align: center;
+      margin-bottom: 8px;
+      opacity: .85;
+    }
+
+    /* ── FLIP CARDS ── */
+    .flip-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .flip-card {
+      height: 72px;
+      perspective: 600px;
+      cursor: pointer;
+    }
+
+    .flip-inner {
+      position: relative;
+      width: 100%; height: 100%;
+      transform-style: preserve-3d;
+      transition: transform .45s cubic-bezier(.4,0,.2,1);
+      border-radius: 9px;
+    }
+
+    .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+
+    .flip-front, .flip-back {
+      position: absolute;
+      inset: 0;
+      border-radius: 9px;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 4px;
+      text-align: center;
+    }
+
+    .flip-front {
+      background: white;
+      border: 1.5px solid #dde3f5;
+    }
+
+    .flip-back {
+      background: var(--be-blue);
+      border: 1.5px solid var(--be-blue);
+      transform: rotateY(180deg);
+    }
+
+    .fc-emoji { font-size: .9rem; margin-bottom: 3px; display: block; }
+
+    .fc-word {
+      font-family: var(--be-font-h);
+      font-weight: 700;
+      font-size: .65rem;
+      color: var(--be-blue);
+      display: block;
+      line-height: 1.2;
+    }
+
+    .fc-tap {
+      font-size: .5rem;
+      color: #aab;
+      display: block;
+      margin-top: 3px;
+    }
+
+    .fc-mean {
+      font-family: var(--be-font-h);
+      font-weight: 700;
+      font-size: .6rem;
+      color: var(--be-yellow);
+      display: block;
+      line-height: 1.2;
+    }
+
+    .fc-sent {
+      font-size: .5rem;
+      color: rgba(255,255,255,.75);
+      display: block;
+      margin-top: 3px;
+      line-height: 1.35;
+    }
+
+    .flip-hint {
+      font-size: .56rem;
+      color: var(--be-muted);
+      text-align: center;
+      margin-bottom: 7px;
+      font-style: italic;
+    }
+
+    /* progress bar mini */
+    .phone-progress {
+      background: #dde3f5;
+      border-radius: 999px;
+      height: 4px;
+      overflow: hidden;
+    }
+
+    .phone-progress-fill {
+      height: 100%;
+      width: 30%;
+      background: linear-gradient(90deg, var(--be-blue), #3a55e8);
+      border-radius: 999px;
+      transition: width .4s;
+    }
+
+    /* Form */
+    .form-title {
+      font-family: var(--be-font-h);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--be-blue);
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
+    .form-sub {
+      font-size: .84rem;
+      color: var(--be-muted);
+      text-align: center;
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+
+    .fg { margin-bottom: 13px; }
+
+    .fl {
+      display: block;
+      font-family: var(--be-font-h);
+      font-weight: 600;
+      font-size: .8rem;
+      color: var(--be-dark);
+      margin-bottom: 5px;
+    }
+
+    .fi {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid #e0e4f0;
+      border-radius: 9px;
+      font-family: var(--be-font-b);
+      font-size: .95rem;
+      color: var(--be-dark);
+      background: #f8f9ff;
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+    }
+
+    .fi:focus {
+      border-color: var(--be-blue);
+      box-shadow: 0 0 0 3px rgba(0,31,184,.09);
+      background: white;
+    }
+
+    .fi.is-err { border-color: #e53e3e; }
+
+    .ferr {
+      font-size: .75rem;
+      color: #e53e3e;
+      margin-top: 4px;
+      display: none;
+    }
+
+    .ferr.show { display: block; }
+
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      background: var(--be-yellow);
+      color: var(--be-blue);
+      font-family: var(--be-font-h);
+      font-weight: 800;
+      font-size: 1rem;
+      border: none;
+      border-radius: 11px;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+      margin-top: 6px;
+      letter-spacing: -.01em;
+    }
+
+    .btn-submit:hover { background: var(--be-yellow-dark); transform: translateY(-1px); }
+    .btn-submit:disabled { opacity: .65; cursor: not-allowed; transform: none; }
+
+    .privacy {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-top: 13px;
+      padding-top: 13px;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .privacy span {
+      font-size: .75rem;
+      color: var(--be-muted);
+      line-height: 1.45;
+    }
+
+    /* ==============================
+       THANK YOU PAGE
+    ============================== */
+    .ty-page {
+      display: none;
+      min-height: 100vh;
+      background: linear-gradient(145deg, #001095 0%, #001fb8 50%, #0a2fd4 100%);
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    .ty-page.show { display: flex; }
+
+    .ty-inner { max-width: 520px; width: 100%; }
+
+    .ty-logo { height: 34px; margin: 0 auto 36px; display: block; }
+
+    .ty-icon {
+      width: 70px; height: 70px;
+      background: rgba(251,202,34,.18);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.9rem;
+      margin: 0 auto 22px;
+    }
+
+    .ty-title {
+      font-family: var(--be-font-h);
+      font-weight: 800;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      color: var(--be-white);
+      margin-bottom: 12px;
+      line-height: 1.15;
+    }
+
+    .ty-sub {
+      color: rgba(255,255,255,.78);
+      font-size: 1.02rem;
+      line-height: 1.65;
+      margin-bottom: 34px;
+    }
+
+    .ty-actions { display: flex; flex-direction: column; gap: 12px; }
+
+    .btn-kit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      background: var(--be-yellow);
+      color: var(--be-blue);
+      font-family: var(--be-font-h);
+      font-weight: 800;
+      font-size: 1.02rem;
+      padding: 16px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+
+    .btn-kit:hover { background: var(--be-yellow-dark); transform: translateY(-2px); }
+
+    .btn-lp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      background: rgba(255,255,255,.1);
+      color: white;
+      font-family: var(--be-font-h);
+      font-weight: 600;
+      font-size: .96rem;
+      padding: 14px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,.22);
+      transition: background .2s, transform .15s;
+    }
+
+    .btn-lp:hover { background: rgba(255,255,255,.18); transform: translateY(-2px); }
+
+    .ty-divider { color: rgba(255,255,255,.38); font-size: .85rem; }
+
+    /* ==============================
+       RESPONSIVE
+    ============================== */
+    /* Top-left logo */
+    .site-logo {
+      position: fixed;
+      top: 20px;
+      left: 28px;
+      z-index: 100;
+    }
+    .site-logo img { height: 30px; width: auto; display: block; }
+
+    @media (max-width: 820px) {
+      .optin-wrap { grid-template-columns: 1fr; gap: 32px; }
+      .optin-copy { text-align: center; }
+      .optin-logo { margin: 0 auto 28px; }
+      .optin-sub { margin-inline: auto; }
+      .optin-perks { max-width: 380px; margin-inline: auto; }
+      .optin-perks li { text-align: left; }
+      .site-logo { top: 14px; left: 16px; }
+      .site-logo img { height: 26px; }
+    }
+
+    @media (max-width: 480px) {
+      .optin-card { padding: 22px 18px; }
+      .optin-page { padding: 32px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Fixed top-left logo -->
+<a class="site-logo" href="https://bantuenglish.com">
+  <img src="https://cdn.scalev.com/uploads/1780541768/NsZWJqmyywUSHvClfvGIHw/1780541768707-HORIZONTAL-LOGO-BANTU-ENGLISH-WHITE.webp" alt="BantuEnglish">
+</a>
+
+<!-- ==============================
+     OPTIN PAGE
+============================== -->
+<div class="optin-page" id="optinPage">
+  <div class="optin-wrap">
+
+    <!-- COPY LEFT -->
+    <div class="optin-copy">
+      <img
+        class="optin-logo"
+        src="https://cdn.scalev.com/uploads/1780541768/NsZWJqmyywUSHvClfvGIHw/1780541768707-HORIZONTAL-LOGO-BANTU-ENGLISH-WHITE.webp"
+        alt="BantuEnglish"
+      >
+
+      <span class="optin-badge">🎁 Gratis · Akses Langsung</span>
+
+      <h1 class="optin-headline">
+        Latihan Ngomong Inggris 5 Menit Sehari —
+        <span class="hl">Free</span>, Langsung Bisa Dicoba
+      </h1>
+
+      <p class="optin-sub">
+        Kit interaktif untuk pekerja dan job seeker yang paham Inggris tapi masih freeze pas disuruh ngomong.
+      </p>
+
+      <ul class="optin-perks">
+        <li>
+          <span class="perk-dot">✓</span>
+          <span><strong>10 topik speaking</strong> — perkenalan, kantor, interview, sampai ngobrol santai</span>
+        </li>
+        <li>
+          <span class="perk-dot">✓</span>
+          <span><strong>150 kosakata</strong> dengan contoh kalimat siap pakai</span>
+        </li>
+        <li>
+          <span class="perk-dot">✓</span>
+          <span><strong>3 challenge speaking</strong> per topik — makin susah, makin seru</span>
+        </li>
+        <li>
+          <span class="perk-dot">✓</span>
+          <span>Sistem poin, badge, dan unlock topik — biar latihan kerasa kayak main</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- FORM CARD RIGHT -->
+    <div class="optin-card">
+
+      <!-- Phone Mockup — Interactive Flip Cards -->
+      <div class="phone-wrap">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-bar">
+            <span class="phone-bar-title">📖 Flip Card · Topik 1</span>
+            <div class="phone-stats">
+              <span class="phone-pill">⭐ 12</span>
+              <span class="phone-pill">⚡ 45</span>
+            </div>
+          </div>
+          <div class="phone-body">
+            <p class="phone-deck-label">Kosakata · 3 / 15</p>
+            <p class="flip-hint">Tap kartu untuk lihat artinya →</p>
+
+            <div class="flip-row">
+
+              <!-- Card 1 -->
+              <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-inner">
+                  <div class="flip-front">
+                    <span class="fc-emoji">💼</span>
+                    <span class="fc-word">Introduce</span>
+                    <span class="fc-tap">tap</span>
+                  </div>
+                  <div class="flip-back">
+                    <span class="fc-mean">memperkenalkan</span>
+                    <span class="fc-sent">"Let me introduce myself."</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-inner">
+                  <div class="flip-front">
+                    <span class="fc-emoji">💪</span>
+                    <span class="fc-word">Confident</span>
+                    <span class="fc-tap">tap</span>
+                  </div>
+                  <div class="flip-back">
+                    <span class="fc-mean">percaya diri</span>
+                    <span class="fc-sent">"I feel confident today."</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-inner">
+                  <div class="flip-front">
+                    <span class="fc-emoji">🎯</span>
+                    <span class="fc-word">Background</span>
+                    <span class="fc-tap">tap</span>
+                  </div>
+                  <div class="flip-back">
+                    <span class="fc-mean">latar belakang</span>
+                    <span class="fc-sent">"My background is in marketing."</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Progress bar -->
+            <div class="phone-progress">
+              <div class="phone-progress-fill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <p class="form-title">Akses kit-nya sekarang — gratis</p>
+      <p class="form-sub">Isi datamu, langsung bisa dipakai</p>
+
+      <form id="optinForm" novalidate>
+        <div class="fg">
+          <label class="fl" for="nama">Nama</label>
+          <input class="fi" type="text" id="nama" placeholder="Nama kamu" autocomplete="name">
+          <p class="ferr" id="errNama">Nama wajib diisi.</p>
+        </div>
+
+        <div class="fg">
+          <label class="fl" for="email">Email</label>
+          <input class="fi" type="email" id="email" placeholder="email@kamu.com" autocomplete="email">
+          <p class="ferr" id="errEmail">Masukkan email yang valid.</p>
+        </div>
+
+        <div class="fg">
+          <label class="fl" for="phone">Nomor WhatsApp</label>
+          <input class="fi" type="tel" id="phone" placeholder="08xxxxxxxxxx" autocomplete="tel">
+          <p class="ferr" id="errPhone">Masukkan nomor WhatsApp yang valid (contoh: 08123456789).</p>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">
+          Akses Gratis Sekarang →
+        </button>
+      </form>
+
+      <div class="privacy">
+        <span>🔒</span>
+        <span>Data kamu aman dan terjaga. Hanya digunakan untuk keperluan belajar bareng BantuEnglish.</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ==============================
+     THANK YOU PAGE
+============================== -->
+<div class="ty-page" id="tyPage">
+  <div class="ty-inner">
+    <img
+      class="ty-logo"
+      src="https://cdn.scalev.com/uploads/1780541768/NsZWJqmyywUSHvClfvGIHw/1780541768707-HORIZONTAL-LOGO-BANTU-ENGLISH-WHITE.webp"
+      alt="BantuEnglish"
+    >
+    <div class="ty-icon">🎉</div>
+    <h2 class="ty-title">Siap, <span id="tyName"></span>!</h2>
+    <p class="ty-sub">
+      Kit kamu sudah bisa diakses sekarang.<br>
+      Klik tombol di bawah untuk langsung mulai latihan.
+    </p>
+    <div class="ty-actions">
+      <a id="btnKit" href="#" class="btn-kit" target="_blank">
+        🎙️ Buka 5-Minute Speaking Kit
+      </a>
+      <span class="ty-divider">atau</span>
+      <a id="btnLP" href="#" class="btn-lp" target="_blank">
+        Pelajari BantuEnglish Speak Daily →
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ================================================================
+   ✏️  KONFIGURASI — ISI BAGIAN INI SEBELUM PUBLISH
+================================================================ */
+const CONFIG = {
+
+  // 1. URL Web App Google Apps Script kamu
+  //    Cara dapat: Apps Script → Deploy → New Deployment
+  //    → Web App → Execute as: Me → Who has access: Anyone → Deploy → Copy URL
+  APPS_SCRIPT_URL: 'PASTE_URL_APPS_SCRIPT_DISINI',
+
+  // 2. URL Speaking Kit (lead magnet)
+  SPEAKING_KIT_URL: 'https://speakingkit.bantuenglish.com/',
+
+  // 3. URL Landing Page Speak Daily
+  LP_URL: 'PASTE_URL_LP_SPEAK_DAILY_DISINI',
+
+};
+/* ================================================================ */
+
+// Set URL ke tombol thank you
+document.getElementById('btnKit').href = CONFIG.SPEAKING_KIT_URL;
+document.getElementById('btnLP').href  = CONFIG.LP_URL;
+
+/* ================================================================
+   VALIDASI
+================================================================ */
+const isEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+const isPhone = v => {
+  const c = v.replace(/[\s\-\.]/g, '');
+  return /^(\+62|62|0)8[1-9][0-9]{7,10}$/.test(c);
+};
+
+const toE164 = v => {
+  const c = v.replace(/[\s\-\.]/g, '');
+  if (c.startsWith('+62')) return c;
+  if (c.startsWith('62'))  return '+' + c;
+  if (c.startsWith('0'))   return '+62' + c.slice(1);
+  return c;
+};
+
+/* ================================================================
+   FORM SUBMIT
+================================================================ */
+document.getElementById('optinForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  const nama  = document.getElementById('nama').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+
+  // Reset
+  ['nama','email','phone'].forEach(id => {
+    document.getElementById(id).classList.remove('is-err');
+  });
+  ['errNama','errEmail','errPhone'].forEach(id => {
+    document.getElementById(id).classList.remove('show');
+  });
+
+  // Validasi
+  let ok = true;
+
+  if (!nama) {
+    document.getElementById('nama').classList.add('is-err');
+    document.getElementById('errNama').classList.add('show');
+    ok = false;
+  }
+  if (!isEmail(email)) {
+    document.getElementById('email').classList.add('is-err');
+    document.getElementById('errEmail').classList.add('show');
+    ok = false;
+  }
+  if (!isPhone(phone)) {
+    document.getElementById('phone').classList.add('is-err');
+    document.getElementById('errPhone').classList.add('show');
+    ok = false;
+  }
+
+  if (!ok) return;
+
+  // Loading
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Mengirim...';
+
+  try {
+    await fetch(CONFIG.APPS_SCRIPT_URL, {
+      method : 'POST',
+      mode   : 'no-cors',   // wajib untuk Apps Script Web App
+      headers: { 'Content-Type': 'application/json' },
+      body   : JSON.stringify({
+        timestamp: new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' }),
+        nama : nama,
+        email: email,
+        phone: toE164(phone),
+      }),
+    });
+  } catch (_) {
+    // no-cors tidak throw, tapi kalau ada error jaringan tetap lanjut
+  }
+
+  // Nama di thank you
+  document.getElementById('tyName').textContent = nama.split(' ')[0];
+
+  // Switch halaman
+  document.getElementById('optinPage').style.display = 'none';
+  document.getElementById('tyPage').classList.add('show');
+  window.scrollTo(0, 0);
+});
+</script>
+</body>
+</html>
